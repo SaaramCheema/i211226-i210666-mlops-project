@@ -1,7 +1,7 @@
 import pytest
 from unittest import mock
 import pandas as pd
-from train import model, X, y  # Importing the variables from the train.py script
+from ..train import model, X, y  # Importing the variables from the train.py script
 from sklearn.linear_model import LinearRegression
 import pickle
 

@@ -1,6 +1,6 @@
 import pytest
 from unittest import mock
-from windows_pipeline import run_pipeline
+from ..weather_pipeline_dag import run_pipeline
 from datetime import datetime
 
 # Mocking the collect_data.collect_weather_data and preprocess.main functions

@@ -1,6 +1,6 @@
 import pytest
 from unittest import mock
-from collect_data import collect_weather_data
+from ..collect_data import collect_weather_data
 import requests
 import csv
 from datetime import datetime
