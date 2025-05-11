@@ -37,10 +37,9 @@ jobs:
         pip install pytest pytest-cov
         pytest tests --cov=. --cov-report=term-missing --cov-report=html
 
-    # Use v1 for local testing with `act`, use v2 for GitHub
     - name: Upload Coverage Report
       if: success()
-      uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@v3
       with:
         name: coverage-report
         path: htmlcov/
