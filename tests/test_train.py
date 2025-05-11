@@ -2,7 +2,6 @@ import os
 import pytest
 from unittest import mock
 import pandas as pd
-from train import model, X, y  # Importing the variables from the train.py script
 from sklearn.linear_model import LinearRegression
 import pickle
 
@@ -27,8 +26,8 @@ def test_train(mock_read_csv, mock_pickle_dump):
 
     # Patch LinearRegression to use our mocked model
     with mock.patch("sklearn.linear_model.LinearRegression", return_value=mock_model):
-        # Call the training script's model fitting and saving
-        from train import model  # Re-importing to trigger execution
+        # Import train.py after applying the mocks to trigger execution
+        import train  # Re-importing to trigger execution of the training code
 
     # Assert read_csv was called with the correct file path
     #mock_read_csv.assert_called_once_with("data/processed_data.csv")
