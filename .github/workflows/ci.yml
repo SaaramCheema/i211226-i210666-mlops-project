@@ -29,9 +29,11 @@ jobs:
     - name: Lint with flake8
       run: |
         pip install flake8
-        flake8 ./src/ ./tests/ --count --select=E9,F63,F7,F82 --show-source --statistics --exclude=venv/,*/site-packages/*,.git,__pycache__,build/,dist/
-        flake8 ./src/ ./tests/ --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics --exclude=venv/,*/site-packages/*,.git,__pycache__,build/,dist/
-
+        # Check Python files in project root and model directory
+        echo "Checking critical syntax errors..."
+        flake8 *.py model/*.py --count --select=E9,F63,F7,F82 --show-source --statistics
+        echo "Checking style and complexity issues..."
+        flake8 *.py model/*.py --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Run Unit Tests
       run: |
         pip install pytest pytest-cov
