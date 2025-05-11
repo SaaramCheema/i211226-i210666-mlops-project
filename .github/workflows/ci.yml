@@ -35,11 +35,11 @@ jobs:
     - name: Run Unit Tests
       run: |
         pip install pytest pytest-cov
-        pytest tests --cov=. --cov-report=term-missing
+        pytest tests --cov=. --cov-report=term-missing --cov-report=html
 
     - name: Upload Coverage Report
       if: success()
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v2   # <-- Changed from v3 to v2 for better act compatibility
       with:
         name: coverage-report
         path: htmlcov/
