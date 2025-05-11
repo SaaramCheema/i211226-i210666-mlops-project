@@ -1,7 +1,7 @@
 import pytest
 from unittest import mock
 import pandas as pd
-from ..preprocess import main
+from preprocess import main
 from sklearn.preprocessing import StandardScaler
 
 # Sample raw data for testing
