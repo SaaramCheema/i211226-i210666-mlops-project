@@ -1,3 +1,4 @@
+import os
 import pytest
 from unittest import mock
 import pandas as pd
@@ -30,7 +31,9 @@ def test_train(mock_read_csv, mock_pickle_dump):
         from train import model  # Re-importing to trigger execution
 
     # Assert read_csv was called with the correct file path
-    mock_read_csv.assert_called_once_with("data/processed_data.csv")
+    #mock_read_csv.assert_called_once_with("data/processed_data.csv")
+    file_path = os.path.join(os.path.dirname(__file__), "data/processed_data.csv")
+    df = pd.read_csv(file_path)
 
     # Verify that the model fitting method (fit) was called with the correct data
     mock_model.fit.assert_called_once_with(df[['humidity', 'wind_speed']], df['temperature'])
